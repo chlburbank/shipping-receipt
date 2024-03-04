@@ -44,4 +44,12 @@ router.delete("/shipments/:id", (req, res) => {
     .catch((error) => res.json({message: error}));
 })
 
+//Delete all (Do no add this into the heroku deploy, this is only for testing)
+router.delete("/shipments", (req, res) => {
+    shippingSchema
+    .deleteMany({})
+    .then(() => res.status(200).send("Collection cleared successfully."))
+    .catch(error => res.status(500).json({ message: error }));
+})
+
 module.exports = router
